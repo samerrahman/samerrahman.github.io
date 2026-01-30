@@ -15,7 +15,7 @@
         }
         .header-flex { display: flex; align-items: center; margin-bottom: 2rem; }
         .header-text { flex: 1; }
-        .profile-pic { margin-left: 20px; width: 180px; height: auto; border-radius: 4px; }
+        .profile-pic { margin-left: 20px; width: 180px; height: auto; border-radius: 4px; object-fit: cover; }
         
         .section-header {
             font-weight: 700;
@@ -27,12 +27,8 @@
             display: inline-block;
         }
 
-        .project-wrapper {
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .project-wrapper:first-of-type {
-            border-top: 1px solid #e0e0e0;
-        }
+        .project-wrapper { border-bottom: 1px solid #e0e0e0; }
+        .project-wrapper:first-of-type { border-top: 1px solid #e0e0e0; }
         
         .project-item {
             padding: 1.2rem 0;
@@ -44,14 +40,13 @@
         }
         .project-item:hover { background-color: #f9f9f9; }
 
-        .project-img { width: 140px; height: 90px; background: #f0f0f0; object-fit: cover; flex-shrink: 0; }
+        .project-img { width: 140px; height: 90px; background: #f0f0f0; object-fit: cover; flex-shrink: 0; border-radius: 2px; }
         h3 { margin: 0; font-size: 1.1rem; color: #222; }
         .project-desc { font-size: 0.85rem; color: #666; margin-top: 4px; }
         .link-indicator { font-size: 0.75rem; color: #007bff; margin-top: 8px; display: block; }
         
         a.contact-link { color: #007bff; text-decoration: none; }
         a.contact-link:hover { text-decoration: underline; }
-        
         ul { padding-left: 20px; }
     </style>
 </head>
@@ -67,28 +62,20 @@
                 <li>Advanced Mathematics</li>
             </ul>
             <p>For fun, I enjoy Pokémon and lifting.</p>
-            <p><a href="mailto:your-email@example.com" class="contact-link">Email</a> | <a href="https://github.com/yourusername" class="contact-link">GitHub</a></p>
+            <p>
+                <a href="mailto:samer.r@gmail.com" class="contact-link">Email</a> | 
+                <a href="https://github.com/samerrahman" class="contact-link">GitHub</a>
+            </p>
         </div>
-        <img src="headshot.jpg" alt="Samer" class="profile-pic">
+        <img src="images/headshot.png" alt="Samer Rahman" class="profile-pic">
     </div>
 
     <div class="section-header">Projects</div>
 
     <div id="projects-section">
         <div class="project-wrapper">
-            <a href="https://github.com/yourusername/lung-detection" class="project-item">
-                <div class="project-img"></div>
-                <div>
-                    <h3>Automated Lung Disease Detection</h3>
-                    <p class="project-desc">Research involving the development of an automated detection system for lung disease.</p>
-                    <span class="link-indicator">View on GitHub</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="project-wrapper">
-            <a href="https://github.com/yourusername/unsupervised-seal" class="project-item">
-                <div class="project-img"></div>
+            <a href="https://github.com/samerrahman/unsupervised-SEAL" class="project-item" target="_blank">
+                <img src="images/unsupervisedseal.png" alt="Unsupervised SEAL" class="project-img">
                 <div>
                     <h3>Unsupervised SEAL</h3>
                     <p class="project-desc">A project focused on unsupervised learning methods and representation extraction.</p>
@@ -98,8 +85,19 @@
         </div>
 
         <div class="project-wrapper">
-            <a href="https://github.com/yourusername/pokellm" class="project-item">
-                <div class="project-img"></div>
+            <a href="https://github.com/IKnowUCantPvp/Lung-Sound-Classification-PCEN" class="project-item" target="_blank">
+                <img src="images/PCEN_spectrogram.png" alt="Lung Classification" class="project-img">
+                <div>
+                    <h3>Lung Sound Classification (PCEN)</h3>
+                    <p class="project-desc">Research project developing an automated detection system for lung disease using PCEN spectrograms.</p>
+                    <span class="link-indicator">View on GitHub</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-wrapper">
+            <a href="https://github.com/samerrahman/pokellm" class="project-item" target="_blank">
+                <img src="images/pokellm.png" alt="PokéLLM" class="project-img">
                 <div>
                     <h3>PokéLLM / PokéAgent</h3>
                     <p class="project-desc">Technical development and environment setup for the PokéAgent challenge.</p>
