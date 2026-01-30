@@ -3,58 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Your Name</title>
+    <title>Home | Samer Rahman</title>
     <style>
-        /* This is the CSS! It stays inside the HTML for simplicity. */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
+            max-width: 750px;
             margin: 40px auto;
             padding: 0 20px;
             color: #333;
-            background-color: #f4f4f9;
         }
-        header {
-            text-align: center;
-            padding: 50px 0;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .header-flex { display: flex; align-items: center; margin-bottom: 2rem; }
+        .header-text { flex: 1; }
+        .profile-pic { margin-left: 20px; width: 180px; height: auto; border-radius: 4px; }
+        
+        .section-header {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #000;
+            margin: 2rem 0 1.5rem 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            display: inline-block;
         }
-        h1 { color: #2c3e50; }
-        .content { margin-top: 30px; }
-        .links a {
-            margin: 0 10px;
-            color: #3498db;
+
+        .project-wrapper {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .project-wrapper:first-of-type {
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .project-item {
+            padding: 1.2rem 0;
+            display: flex;
+            gap: 20px;
             text-decoration: none;
-            font-weight: bold;
+            color: inherit;
+            transition: background-color 0.2s;
         }
-        .links a:hover { text-decoration: underline; }
+        .project-item:hover { background-color: #f9f9f9; }
+
+        .project-img { width: 140px; height: 90px; background: #f0f0f0; object-fit: cover; flex-shrink: 0; }
+        h3 { margin: 0; font-size: 1.1rem; color: #222; }
+        .project-desc { font-size: 0.85rem; color: #666; margin-top: 4px; }
+        .link-indicator { font-size: 0.75rem; color: #007bff; margin-top: 8px; display: block; }
+        
+        a.contact-link { color: #007bff; text-decoration: none; }
+        a.contact-link:hover { text-decoration: underline; }
+        
+        ul { padding-left: 20px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Hi, I'm [Your Name] 👋</h1>
-        <p>Writer, Developer, and Coffee Enthusiast</p>
-    </header>
+    <div class="header-flex">
+        <div class="header-text">
+            <h2 style="font-weight: bold;">Samer Rahman</h2>
+            <p>I am interested in Computer Science, AI, and Computational Linguistics.</p>
+            <ul>
+                <li>Reinforcement Learning</li>
+                <li>Large Language Models</li>
+                <li>Advanced Mathematics</li>
+            </ul>
+            <p>For fun, I enjoy Pokémon and lifting.</p>
+            <p><a href="mailto:your-email@example.com" class="contact-link">Email</a> | <a href="https://github.com/yourusername" class="contact-link">GitHub</a></p>
+        </div>
+        <img src="headshot.jpg" alt="Samer" class="profile-pic">
+    </div>
 
-    <div class="content">
-        <h2>About Me</h2>
-        <p>I'm a passionate creator based in [Your City]. I love building things for the web and exploring new technologies.</p>
-        
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML & CSS</li>
-            <li>Creative Writing</li>
-            <li>Project Management</li>
-        </ul>
+    <div class="section-header">Projects</div>
 
-        <div class="links">
-            <a href="https://github.com">GitHub</a>
-            <a href="https://linkedin.com">LinkedIn</a>
-            <a href="mailto:your@email.com">Email Me</a>
+    <div id="projects-section">
+        <div class="project-wrapper">
+            <a href="https://github.com/yourusername/lung-detection" class="project-item">
+                <div class="project-img"></div>
+                <div>
+                    <h3>Automated Lung Disease Detection</h3>
+                    <p class="project-desc">Research involving the development of an automated detection system for lung disease.</p>
+                    <span class="link-indicator">View on GitHub</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-wrapper">
+            <a href="https://github.com/yourusername/unsupervised-seal" class="project-item">
+                <div class="project-img"></div>
+                <div>
+                    <h3>Unsupervised SEAL</h3>
+                    <p class="project-desc">A project focused on unsupervised learning methods and representation extraction.</p>
+                    <span class="link-indicator">View on GitHub</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-wrapper">
+            <a href="https://github.com/yourusername/pokellm" class="project-item">
+                <div class="project-img"></div>
+                <div>
+                    <h3>PokéLLM / PokéAgent</h3>
+                    <p class="project-desc">Technical development and environment setup for the PokéAgent challenge.</p>
+                    <span class="link-indicator">View on GitHub</span>
+                </div>
+            </a>
         </div>
     </div>
 
