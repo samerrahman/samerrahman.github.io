@@ -1,58 +1,62 @@
-{% load markup %}
-<html>
-	<head>
-		<meta>
-		<title>{% block title %}nugarum cesaris{% endblock %}</title>
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/main.css">
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	</head>
-	<body>
-		<div id="container">
-			<header>
-				<h1><a href = "/">nugarum cesaris</a></h1>
-				<nav id="menu">
-					<ul>
-						<li id="menu1"><a class="github" href="https://github.com/cesarvargas00">github</a></li>
-						<li id="menu2"><a class="face" href="https://www.facebook.com/cesarvargas00">face</a></li>
-						<li id="menu3"><a class="twitter" href="https://twitter.com/madasheila">twitter</a></li>
-					</ul>
-				</nav>
-			</header>
-			<section id="content">
-				{% block content %}
-					{% for p in ultimos_posts%}
-					<h2>{{p.title}}</h2>
-					<h3>Posted in {{p.data}} #<a href="/post/{{p.id}}/#disqus_thread"> 0 Comments</a></h3>
-					{% if user.is_authenticated %}<a href="/apagar/{{p.id}}">remove</a>{% endif %}
-					<div class="post">
-						<p>
-						{{p.conteudo|markdown:"safe"}}
-						</p>
-						<a href="/post/{{p.id}}" class="more">. . .more</a>
-					</div>
-					{%endfor%}
-					<div class="navigation">&lt&nbsp&nbsp&nbsp&gt</div>
-				{% endblock %}
-			</section>
-			<footer>
-				<a href="#">about</a>
-				<a href="/history">history</a>
-				{% if user.is_authenticated %}<a href="/logout">logout</a>{% else %}<a href="/login">login</a>{% endif %}
-			</footer>
-		</div>
-		{% block scripts %}
-		<script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'cesarblog'; // required: replace example with your forum shortname
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Your Name</title>
+    <style>
+        /* This is the CSS! It stays inside the HTML for simplicity. */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; }
+        .content { margin-top: 30px; }
+        .links a {
+            margin: 0 10px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-        </script>
-        {% endblock %}
-	</body>
+    <header>
+        <h1>Hi, I'm [Your Name] 👋</h1>
+        <p>Writer, Developer, and Coffee Enthusiast</p>
+    </header>
+
+    <div class="content">
+        <h2>About Me</h2>
+        <p>I'm a passionate creator based in [Your City]. I love building things for the web and exploring new technologies.</p>
+        
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML & CSS</li>
+            <li>Creative Writing</li>
+            <li>Project Management</li>
+        </ul>
+
+        <div class="links">
+            <a href="https://github.com">GitHub</a>
+            <a href="https://linkedin.com">LinkedIn</a>
+            <a href="mailto:your@email.com">Email Me</a>
+        </div>
+    </div>
+
+</body>
 </html>
