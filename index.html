@@ -45,6 +45,12 @@
         h3 { margin: 0; font-size: 1.1rem; color: #222; }
         .project-desc { font-size: 0.85rem; color: #666; margin-top: 4px; }
         .link-indicator { font-size: 0.75rem; color: #007bff; margin-top: 8px; display: block; }
+        .link-group { font-size: 0.75rem; margin-top: 8px; }
+        .link-group a { color: #007bff; text-decoration: none; }
+        .link-group a:hover { text-decoration: underline; }
+        .link-divider { color: #888; margin: 0 4px; }
+        .project-link-title { color: inherit; text-decoration: none; }
+        .project-link-title:hover { color: #007bff; }
         
         a.contact-link { color: #007bff; text-decoration: none; }
         a.contact-link:hover { text-decoration: underline; }
@@ -130,16 +136,22 @@
         </div>
 
         <div class="project-wrapper">
-            <a href="https://simulchess-daf26.web.app" class="project-item" target="_blank">
-                <img src="images/simulchess.png" alt="SimulChess" class="project-img">
+            <div class="project-item">
+                <a href="https://simulchess-daf26.web.app" target="_blank">
+                    <img src="images/simulchess.png" alt="SimulChess" class="project-img">
+                </a>
                 <div>
-                    <h3>SimulChess</h3>
+                    <h3><a href="https://simulchess-daf26.web.app" target="_blank" class="project-link-title">SimulChess</a></h3>
                     <p class="project-desc">
                         Real-time simultaneous multiplayer chess with collision physics, rated matchmaking, and an Elo ranking system.
                     </p>
-                    <span class="link-indicator">Play Online / View Project</span>
+                    <div class="link-group">
+                        <a href="https://simulchess-daf26.web.app" target="_blank">Play Online</a>
+                        <span class="link-divider">|</span>
+                        <a href="https://github.com/samerrahman/simulchess" target="_blank">View Project</a>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 
