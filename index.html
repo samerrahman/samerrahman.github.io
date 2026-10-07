@@ -41,6 +41,7 @@
         .project-item:hover { background-color: #f9f9f9; }
 
         .project-img { width: 140px; height: 90px; background: #f0f0f0; object-fit: cover; flex-shrink: 0; border-radius: 2px; }
+        .project-img.contain { object-fit: contain; background: #f8f9fa; box-sizing: border-box; padding: 4px; }
         h3 { margin: 0; font-size: 1.1rem; color: #222; }
         .project-desc { font-size: 0.85rem; color: #666; margin-top: 4px; }
         .link-indicator { font-size: 0.75rem; color: #007bff; margin-top: 8px; display: block; }
@@ -77,19 +78,6 @@
 
     <div id="projects-section">
         <div class="project-wrapper">
-            <a href="https://whispertex.dev" class="project-item" target="_blank">
-                <img src="images/whispertex.png" alt="WhisperTeX" class="project-img">
-                <div>
-                    <h3>WhisperTeX: Speech-to-Written LaTeX for Mac</h3>
-                    <p class="project-desc">
-                        A native macOS application and CLI that lets you dictate mathematics in natural English and compiles it into precision LaTeX—automatically pasting directly wherever your cursor is blinking across Overleaf, Notion, Google Docs, or VS Code.
-                    </p>
-                    <span class="link-indicator">Download App / View Website</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="project-wrapper">
             <a href="https://github.com/samerrahman/pokellm" class="project-item" target="_blank">
                 <img src="images/pokellm.png" alt="PokéLLM VGC Bot" class="project-img">
                 <div>
@@ -103,12 +91,12 @@
         </div>
 
         <div class="project-wrapper">
-            <a href="https://github.com/samerrahman/unsupervised-SEAL" class="project-item" target="_blank">
-                <img src="images/unsupervisedseal.png" alt="Unsupervised SEAL" class="project-img">
+            <a href="https://github.com/IKnowUCantPvp/Lung-Sound-Classification-PCEN" class="project-item" target="_blank">
+                <img src="images/PCEN_Spectrogram.png" alt="Lung Classification" class="project-img">
                 <div>
-                    <h3>Unsupervised SEAL</h3>
+                    <h3>Lung Sound Classification (PCEN)</h3>
                     <p class="project-desc">
-                        A machine learning framework focused on unsupervised representation learning and automated feature extraction from high-dimensional datasets. Investigates latent space structure, unsupervised clustering, and contrastive representations without requiring dense ground-truth labeling.
+                        Biomedical acoustic engineering and machine learning research developing an automated diagnostic classification system for respiratory pathology. Uses Per-Channel Energy Normalization (PCEN) time-frequency representations to suppress ambient hospital noise and detect wheezes, crackles, and disease signatures with deep convolutional neural networks.
                     </p>
                     <span class="link-indicator">View on GitHub</span>
                 </div>
@@ -116,12 +104,25 @@
         </div>
 
         <div class="project-wrapper">
-            <a href="https://github.com/IKnowUCantPvp/Lung-Sound-Classification-PCEN" class="project-item" target="_blank">
-                <img src="images/PCEN_Spectrogram.png" alt="Lung Classification" class="project-img">
+            <a href="https://whispertex.dev" class="project-item" target="_blank">
+                <img src="images/whispertex.png" alt="WhisperTeX" class="project-img contain">
                 <div>
-                    <h3>Lung Sound Classification (PCEN)</h3>
+                    <h3>WhisperTeX: Speech-to-Written LaTeX for Mac</h3>
                     <p class="project-desc">
-                        Biomedical acoustic engineering and machine learning research developing an automated diagnostic classification system for respiratory pathology. Uses Per-Channel Energy Normalization (PCEN) time-frequency representations to suppress ambient hospital noise and detect wheezes, crackles, and disease signatures with deep convolutional neural networks.
+                        A native macOS application and CLI that lets you dictate mathematics in natural English and compiles it into precision LaTeX—automatically pasting directly wherever your cursor is blinking across Overleaf, Notion, Google Docs, or VS Code.
+                    </p>
+                    <span class="link-indicator">Download App / View Website</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-wrapper">
+            <a href="https://github.com/samerrahman/unsupervised-SEAL" class="project-item" target="_blank">
+                <img src="images/unsupervisedseal.png" alt="Unsupervised SEAL" class="project-img">
+                <div>
+                    <h3>Unsupervised SEAL</h3>
+                    <p class="project-desc">
+                        A machine learning framework focused on unsupervised representation learning and automated feature extraction from high-dimensional datasets. Investigates latent space structure, unsupervised clustering, and contrastive representations without requiring dense ground-truth labeling.
                     </p>
                     <span class="link-indicator">View on GitHub</span>
                 </div>
