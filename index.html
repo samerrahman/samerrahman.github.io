@@ -27,8 +27,23 @@
             display: inline-block;
         }
 
+        .tabs { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
+        .tab {
+            font: inherit;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            background: #fff;
+            color: #555;
+            cursor: pointer;
+        }
+        .tab:hover { border-color: #007bff; color: #007bff; }
+        .tab.active { background: #007bff; border-color: #007bff; color: #fff; }
+
+        #projects-section { border-top: 1px solid #e0e0e0; }
         .project-wrapper { border-bottom: 1px solid #e0e0e0; }
-        .project-wrapper:first-of-type { border-top: 1px solid #e0e0e0; }
+        .project-wrapper.hidden { display: none; }
         
         .project-item {
             padding: 1.2rem 0;
@@ -82,8 +97,15 @@
 
     <div class="section-header">Projects</div>
 
+    <div class="tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="games">Games</button>
+        <button class="tab" data-filter="tools">Tools</button>
+        <button class="tab" data-filter="research">Research</button>
+    </div>
+
     <div id="projects-section">
-        <div class="project-wrapper">
+        <div class="project-wrapper" data-category="research">
             <a href="https://github.com/samerrahman/pokellm" class="project-item" target="_blank">
                 <img src="images/pokellm.png" alt="PokéLLM VGC Bot" class="project-img">
                 <div>
@@ -96,7 +118,7 @@
             </a>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" data-category="research">
             <a href="https://github.com/IKnowUCantPvp/Lung-Sound-Classification-PCEN" class="project-item" target="_blank">
                 <img src="images/PCEN_Spectrogram.png" alt="Lung Classification" class="project-img">
                 <div>
@@ -109,7 +131,7 @@
             </a>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" data-category="games">
             <div class="project-item">
                 <a href="https://shouldhaveskipped.work" target="_blank">
                     <img src="images/hush.png" alt="HUSH" class="project-img">
@@ -128,7 +150,7 @@
             </div>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" data-category="tools">
             <a href="https://whispertex.dev" class="project-item" target="_blank">
                 <img src="images/whispertex.png" alt="WhisperTeX" class="project-img contain">
                 <div>
@@ -136,12 +158,12 @@
                     <p class="project-desc">
                         A native macOS application and CLI that lets you dictate mathematics in natural English and compiles it into precision LaTeX—automatically pasting directly wherever your cursor is blinking across Overleaf, Notion, Google Docs, or VS Code.
                     </p>
-                    <span class="link-indicator">Download App / View Website</span>
+                    <span class="link-indicator">View Website</span>
                 </div>
             </a>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" data-category="research">
             <a href="https://github.com/samerrahman/unsupervised-SEAL" class="project-item" target="_blank">
                 <img src="images/unsupervisedseal.png" alt="Unsupervised SEAL" class="project-img">
                 <div>
@@ -154,7 +176,7 @@
             </a>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" data-category="games">
             <div class="project-item">
                 <a href="https://simulchess-daf26.web.app" target="_blank">
                     <img src="images/simulchess.png" alt="SimulChess" class="project-img">
@@ -162,7 +184,7 @@
                 <div>
                     <h3><a href="https://simulchess-daf26.web.app" target="_blank" class="project-link-title">SimulChess</a></h3>
                     <p class="project-desc">
-                        Real-time simultaneous multiplayer chess with collision physics, rated matchmaking, and an Elo ranking system.
+                        Real-time simultaneous multiplayer chess with rated matchmaking, and an Elo ranking system.
                     </p>
                     <div class="link-group">
                         <a href="https://simulchess-daf26.web.app" target="_blank">Play Online</a>
@@ -174,5 +196,16 @@
         </div>
     </div>
 
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+                const filter = tab.dataset.filter;
+                document.querySelectorAll('.project-wrapper').forEach(p => {
+                    p.classList.toggle('hidden', filter !== 'all' && p.dataset.category !== filter);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
