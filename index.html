@@ -3,196 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Samer Rahman</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 750px;
-            margin: 40px auto;
-            padding: 0 20px;
-            color: #333;
-        }
-        .header-flex { display: flex; align-items: center; margin-bottom: 2rem; }
-        .header-text { flex: 1; }
-        .profile-pic { margin-left: 20px; width: 180px; height: auto; border-radius: 4px; object-fit: cover; }
-        
-        .section-header {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #000;
-            margin: 2rem 0 1.5rem 0;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        .tabs { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
-        .tab {
-            font: inherit;
-            font-size: 0.85rem;
-            padding: 4px 14px;
-            border: 1px solid #ddd;
-            border-radius: 999px;
-            background: #fff;
-            color: #555;
-            cursor: pointer;
-        }
-        .tab:hover { border-color: #007bff; color: #007bff; }
-        .tab.active { background: #007bff; border-color: #007bff; color: #fff; }
-
-        #projects-section { border-top: 1px solid #e0e0e0; }
-        .project-wrapper { border-bottom: 1px solid #e0e0e0; }
-        .project-wrapper.hidden { display: none; }
-        
-        .project-item {
-            padding: 1.2rem 0;
-            display: flex;
-            gap: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: background-color 0.2s;
-        }
-        .project-item:hover { background-color: #f9f9f9; }
-
-        .project-img { width: 140px; height: 90px; background: #f0f0f0; object-fit: cover; flex-shrink: 0; border-radius: 2px; }
-        .project-img.contain { object-fit: contain; background: #f8f9fa; box-sizing: border-box; padding: 4px; }
-        h3 { margin: 0; font-size: 1.1rem; color: #222; }
-        .project-desc { font-size: 0.85rem; color: #666; margin-top: 4px; }
-        .link-indicator { font-size: 0.75rem; color: #007bff; margin-top: 8px; display: block; }
-        .link-group { font-size: 0.75rem; margin-top: 8px; }
-        .link-group a { color: #007bff; text-decoration: none; }
-        .link-group a:hover { text-decoration: underline; }
-        .link-divider { color: #888; margin: 0 4px; }
-        .project-link-title { color: inherit; text-decoration: none; }
-        .project-link-title:hover { color: #007bff; }
-        
-        a.contact-link { color: #007bff; text-decoration: none; }
-        a.contact-link:hover { text-decoration: underline; }
-        ul { padding-left: 20px; }
-    </style>
+    <title>Samer Rahman</title>
+    <meta name="description" content="Samer Rahman: games, tools and research projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <script>
+        // Hide the plain page while the 3D scene loads. main.js clears this either way, and the
+        // timer brings the plain page back if the scene never starts (old browser, CDN blocked).
+        document.documentElement.classList.add('loading-3d');
+        setTimeout(() => {
+            if (!document.documentElement.classList.contains('has-3d')) {
+                document.documentElement.classList.remove('loading-3d');
+            }
+        }, 6000);
+    </script>
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+    </script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
 
-    <div class="header-flex">
-        <div class="header-text">
-            <h2 style="font-weight: bold;">Samer Rahman</h2>
-            <p>I am interested in:</p>
-            <ul>
-                <li>Reinforcement Learning</li>
-                <li>Linguistics</li>
-                 <li>Physics</li>
-                <li>Insects and Arachnids</li>
-            </ul>
-            <p>For fun, I enjoy Competitive Pokémon, Table Tennis, and Lifting</p>
-            <p>
-                <a href="mailto:samer.r@outlook.com" class="contact-link">Email</a> | 
-                <a href="https://github.com/samerrahman" class="contact-link">GitHub</a>|
-                <a href="https://docs.google.com/document/d/16SLjIeONVsYSbSq2TN0WJf5vCwZNJibqccfSk0UH4lg/edit?usp=sharing" class="contact-link">Blog</a>|
-                <a href="https://drive.google.com/file/d/1kdjRp_U6fTSsk6EQmclG3M-im75J9QEV/view?usp=sharing" class="contact-link">Resume</a>
-            </p>
-        </div>
-        <img src="images/headshot.png" alt="Samer Rahman" class="profile-pic">
+    <div class="jungle" aria-hidden="true">
+        <svg width="0" height="0">
+            <defs>
+                <linearGradient id="lf-shade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#fff" stop-opacity="0.1"/>
+                    <stop offset="0.5" stop-color="#fff" stop-opacity="0.02"/>
+                    <stop offset="0.5" stop-color="#000" stop-opacity="0.12"/>
+                    <stop offset="1" stop-color="#000" stop-opacity="0.02"/>
+                </linearGradient>
+                <g id="lf">
+                    <path d="M0 0 C40 -48 130 -52 200 0 C130 52 40 48 0 0 Z"/>
+                    <path d="M0 0 C40 -48 130 -52 200 0 C130 52 40 48 0 0 Z" fill="url(#lf-shade)"/>
+                    <path d="M0 0 Q100 -3 200 0 M40 -1 L62 -26 M75 -2 L100 -30 M110 -2 L134 -26 M145 -1 L163 -18 M40 1 L62 26 M75 2 L100 30 M110 2 L134 26 M145 1 L163 18" fill="none" stroke="#fff" stroke-opacity="0.07" stroke-width="2"/>
+                </g>
+                <g id="vine">
+                    <path d="M40 0 C28 70 54 130 40 200 C28 260 52 320 40 390 C32 430 44 470 40 500" fill="none" stroke="#24502e" stroke-width="3.5" stroke-linecap="round"/>
+                    <use href="#lf" fill="#2f7040" transform="translate(36 40) rotate(30) scale(0.16)"/>
+                    <use href="#lf" fill="#2a6339" transform="translate(38 90) rotate(150) scale(0.17)"/>
+                    <use href="#lf" fill="#3a8048" transform="translate(45 140) rotate(35) scale(0.15)"/>
+                    <use href="#lf" fill="#2f7040" transform="translate(42 190) rotate(145) scale(0.18)"/>
+                    <use href="#lf" fill="#2a6339" transform="translate(36 240) rotate(28) scale(0.16)"/>
+                    <use href="#lf" fill="#3a8048" transform="translate(40 290) rotate(152) scale(0.15)"/>
+                    <use href="#lf" fill="#2f7040" transform="translate(46 340) rotate(32) scale(0.17)"/>
+                    <use href="#lf" fill="#2a6339" transform="translate(40 390) rotate(148) scale(0.14)"/>
+                    <use href="#lf" fill="#3a8048" transform="translate(39 440) rotate(30) scale(0.13)"/>
+                    <use href="#lf" fill="#2f7040" transform="translate(40 490) rotate(140) scale(0.12)"/>
+                </g>
+            </defs>
+        </svg>
+        <svg class="foliage foliage-tl" viewBox="0 0 360 360">
+            <use href="#lf" fill="#163a23" transform="translate(-20 30) rotate(14) scale(1.55)"/>
+            <use href="#lf" fill="#1b4529" transform="translate(-10 -10) rotate(36) scale(1.75)"/>
+            <use href="#lf" fill="#1f4f2e" transform="translate(-30 10) rotate(60) scale(1.6)"/>
+            <use href="#lf" fill="#173f25" transform="translate(-40 40) rotate(82) scale(1.3)"/>
+            <use href="#lf" fill="#256037" transform="translate(0 0) rotate(24) scale(1.15)"/>
+            <use href="#lf" fill="#2a6a3c" transform="translate(-6 4) rotate(48) scale(1.05)"/>
+            <use href="#lf" fill="#2f7442" transform="translate(4 -4) rotate(8) scale(0.9)"/>
+        </svg>
+        <svg class="foliage foliage-tr" viewBox="0 0 280 280">
+            <use href="#lf" fill="#163a23" transform="translate(300 -10) rotate(112) scale(1.3)"/>
+            <use href="#lf" fill="#1c472a" transform="translate(300 0) rotate(138) scale(1.45)"/>
+            <use href="#lf" fill="#23583a" transform="translate(290 10) rotate(160) scale(1.2)"/>
+            <use href="#lf" fill="#2a693c" transform="translate(285 -5) rotate(126) scale(0.95)"/>
+        </svg>
+        <svg class="foliage foliage-br" viewBox="0 0 420 420">
+            <use href="#lf" fill="#143620" transform="translate(440 430) rotate(196) scale(1.7)"/>
+            <use href="#lf" fill="#1a4428" transform="translate(440 440) rotate(222) scale(1.9)"/>
+            <use href="#lf" fill="#1e4d2d" transform="translate(430 450) rotate(248) scale(1.7)"/>
+            <use href="#lf" fill="#174026" transform="translate(420 450) rotate(268) scale(1.4)"/>
+            <use href="#lf" fill="#245e36" transform="translate(430 430) rotate(210) scale(1.25)"/>
+            <use href="#lf" fill="#2b6b3d" transform="translate(430 430) rotate(236) scale(1.15)"/>
+            <use href="#lf" fill="#317646" transform="translate(425 435) rotate(256) scale(0.95)"/>
+        </svg>
+        <svg class="vine vine-1" viewBox="0 0 80 500"><use href="#vine"/></svg>
+        <svg class="vine vine-2" viewBox="0 0 80 500"><use href="#vine"/></svg>
+        <svg class="vine vine-3" viewBox="0 0 80 500"><use href="#vine"/></svg>
     </div>
 
-    <div class="section-header">Projects</div>
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="labels"></div>
+    <div class="loader" aria-hidden="true"><span class="loader-leaf"></span>Growing the plant…</div>
+    <p class="hint" aria-hidden="true">Drag to look around · click the spider</p>
 
-    <div class="tabs">
-        <button class="tab active" data-filter="all">All</button>
-        <button class="tab" data-filter="games">Games</button>
-        <button class="tab" data-filter="tools">Tools</button>
-        <button class="tab" data-filter="research">Research</button>
-    </div>
+    <header class="hud">
+        <h1 class="name">Samer Rahman</h1>
+    </header>
 
-    <div id="projects-section">
-        <div class="project-wrapper" data-category="research">
-            <a href="https://github.com/IKnowUCantPvp/Lung-Sound-Classification-PCEN" class="project-item" target="_blank">
-                <img src="images/PCEN_Spectrogram.png" alt="Lung Classification" class="project-img">
-                <div>
-                    <h3>Lung Sound Classification (PCEN)</h3>
-                    <p class="project-desc">
-                        Biomedical acoustic engineering and machine learning research developing an automated diagnostic classification system for respiratory pathology. Uses Per-Channel Energy Normalization (PCEN) time-frequency representations to suppress ambient hospital noise and detect wheezes, crackles, and disease signatures with deep convolutional neural networks.
-                    </p>
-                    <span class="link-indicator">View on GitHub</span>
-                </div>
-            </a>
-        </div>
+    <aside id="panel" tabindex="-1" aria-label="Section">
+        <button class="panel-close" type="button" aria-label="Close">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="panel-body">
+            <!--
+                Each section opens from the leaf named in data-leaf, and its heading becomes the
+                leaf's label. Leaves 0-4 face the camera and suit sections best:
+                  0 top centre   1 upper left   2 upper right   3 lower left   4 lower right
+                Leaves 5-9 work too but are smaller or partly hidden:
+                  5 back left    6 back right   7 front, near the ground   8 low right   9 low left
+                The spider starts on the free leaf closest to the camera.
+            -->
+            <section id="about" data-section="about" data-leaf="0">
+                <h2>About me</h2>
+                <img src="images/headshot.png" alt="Samer Rahman" class="profile-pic">
+                <p class="muted">I am interested in:</p>
+                <ul class="interests">
+                    <li>Reinforcement Learning</li>
+                    <li>Linguistics</li>
+                    <li>Physics</li>
+                    <li>Insects and Arachnids</li>
+                </ul>
+                <p class="muted">For fun, I enjoy Competitive Pokémon, Table Tennis, and Lifting</p>
+            </section>
 
-        <div class="project-wrapper" data-category="games">
-            <div class="project-item">
-                <a href="https://shouldhaveskipped.work" target="_blank">
-                    <img src="images/hush.png" alt="HUSH" class="project-img">
-                </a>
-                <div>
-                    <h3><a href="https://shouldhaveskipped.work" target="_blank" class="project-link-title">HUSH</a></h3>
-                    <p class="project-desc">
-                        First-person horror game where a monster hunts you by sound and your webcam reads your heart rate. A friend can join through a link to read you the puzzle manual. Made at CalHacks 13.0.
-                    </p>
-                    <div class="link-group">
-                        <a href="https://shouldhaveskipped.work" target="_blank">Play Online</a>
-                        <span class="link-divider">|</span>
-                        <a href="https://github.com/samerrahman/CalHacks-13.0" target="_blank">View Project</a>
+            <section id="games" data-section="games" data-leaf="2">
+                <h2>Games</h2>
+                <div class="projects">
+                    <div class="project-wrapper">
+                        <div class="project-item">
+                            <a href="https://shouldhaveskipped.work" target="_blank">
+                                <img src="images/hush.png" alt="HUSH" class="project-img">
+                            </a>
+                            <div>
+                                <h3><a href="https://shouldhaveskipped.work" target="_blank" class="project-link-title">HUSH</a></h3>
+                                <p class="project-desc">
+                                    First-person horror game where a monster hunts you by sound and your webcam reads your heart rate. A friend can join through a link to read you the puzzle manual. Made at CalHacks 13.0.
+                                </p>
+                                <div class="link-group">
+                                    <a href="https://shouldhaveskipped.work" target="_blank">Play Online</a>
+                                    <span class="link-divider">|</span>
+                                    <a href="https://github.com/samerrahman/CalHacks-13.0" target="_blank">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-wrapper">
+                        <div class="project-item">
+                            <a href="https://simulchess-daf26.web.app" target="_blank">
+                                <img src="images/simulchess.png" alt="SimulChess" class="project-img">
+                            </a>
+                            <div>
+                                <h3><a href="https://simulchess-daf26.web.app" target="_blank" class="project-link-title">SimulChess</a></h3>
+                                <p class="project-desc">
+                                    Real-time simultaneous multiplayer chess with rated matchmaking, and an Elo ranking system.
+                                </p>
+                                <div class="link-group">
+                                    <a href="https://simulchess-daf26.web.app" target="_blank">Play Online</a>
+                                    <span class="link-divider">|</span>
+                                    <a href="https://github.com/samerrahman/simulchess" target="_blank">View Project</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div class="project-wrapper" data-category="tools">
-            <a href="https://whispertex.dev" class="project-item" target="_blank">
-                <img src="images/whispertex.png" alt="WhisperTeX" class="project-img contain">
-                <div>
-                    <h3>WhisperTeX: Speech-to-Written LaTeX for Mac</h3>
-                    <p class="project-desc">
-                        A native macOS application and CLI that lets you dictate mathematics in natural English and compiles it into precision LaTeX—automatically pasting directly wherever your cursor is blinking across Overleaf, Notion, Google Docs, or VS Code.
-                    </p>
-                    <span class="link-indicator">View Website</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="project-wrapper" data-category="research">
-            <a href="https://github.com/samerrahman/unsupervised-SEAL" class="project-item" target="_blank">
-                <img src="images/unsupervisedseal.png" alt="Unsupervised SEAL" class="project-img">
-                <div>
-                    <h3>Unsupervised SEAL</h3>
-                    <p class="project-desc">
-                        A machine learning project that teaches models to find useful patterns in complex data on their own, without needing people to label examples first. It explores how models organize what they learn internally, how they group similar data together, and how comparing examples to each other can help them build better understanding with little human guidance.
-                    </p>
-                    <span class="link-indicator">View on GitHub</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="project-wrapper" data-category="games">
-            <div class="project-item">
-                <a href="https://simulchess-daf26.web.app" target="_blank">
-                    <img src="images/simulchess.png" alt="SimulChess" class="project-img">
-                </a>
-                <div>
-                    <h3><a href="https://simulchess-daf26.web.app" target="_blank" class="project-link-title">SimulChess</a></h3>
-                    <p class="project-desc">
-                        Real-time simultaneous multiplayer chess with rated matchmaking, and an Elo ranking system.
-                    </p>
-                    <div class="link-group">
-                        <a href="https://simulchess-daf26.web.app" target="_blank">Play Online</a>
-                        <span class="link-divider">|</span>
-                        <a href="https://github.com/samerrahman/simulchess" target="_blank">View Project</a>
+            <section id="tools" data-section="tools" data-leaf="3">
+                <h2>Tools</h2>
+                <div class="projects">
+                    <div class="project-wrapper">
+                        <a href="https://whispertex.dev" class="project-item" target="_blank">
+                            <img src="images/whispertex.png" alt="WhisperTeX" class="project-img contain">
+                            <div>
+                                <h3>WhisperTeX: Speech-to-Written LaTeX for Mac</h3>
+                                <p class="project-desc">
+                                    A native macOS application and CLI that lets you dictate mathematics in natural English and compiles it into precision LaTeX—automatically pasting directly wherever your cursor is blinking across Overleaf, Notion, Google Docs, or VS Code.
+                                </p>
+                                <span class="link-indicator">View Website</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section id="research" data-section="research" data-leaf="1">
+                <h2>Research</h2>
+                <div class="projects">
+                    <div class="project-wrapper">
+                        <a href="https://github.com/IKnowUCantPvp/Lung-Sound-Classification-PCEN" class="project-item" target="_blank">
+                            <img src="images/PCEN_Spectrogram.png" alt="Lung Classification" class="project-img">
+                            <div>
+                                <h3>Lung Sound Classification (PCEN)</h3>
+                                <p class="project-desc">
+                                    Biomedical acoustic engineering and machine learning research developing an automated diagnostic classification system for respiratory pathology. Uses Per-Channel Energy Normalization (PCEN) time-frequency representations to suppress ambient hospital noise and detect wheezes, crackles, and disease signatures with deep convolutional neural networks.
+                                </p>
+                                <span class="link-indicator">View on GitHub</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="project-wrapper">
+                        <a href="https://github.com/samerrahman/unsupervised-SEAL" class="project-item" target="_blank">
+                            <img src="images/unsupervisedseal.png" alt="Unsupervised SEAL" class="project-img">
+                            <div>
+                                <h3>Unsupervised SEAL</h3>
+                                <p class="project-desc">
+                                    A machine learning project that teaches models to find useful patterns in complex data on their own, without needing people to label examples first. It explores how models organize what they learn internally, how they group similar data together, and how comparing examples to each other can help them build better understanding with little human guidance.
+                                </p>
+                                <span class="link-indicator">View on GitHub</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" data-section="contact" data-leaf="4">
+                <h2>Contact</h2>
+                <ul class="contact-list">
+                    <li><a href="mailto:samer.r@outlook.com"><span>Email</span>samer.r@outlook.com</a></li>
+                    <li><a href="https://github.com/samerrahman" target="_blank"><span>GitHub</span>github.com/samerrahman</a></li>
+                    <li><a href="https://docs.google.com/document/d/16SLjIeONVsYSbSq2TN0WJf5vCwZNJibqccfSk0UH4lg/edit?usp=sharing" target="_blank"><span>Blog</span>Google Doc</a></li>
+                    <li><a href="https://drive.google.com/file/d/1kdjRp_U6fTSsk6EQmclG3M-im75J9QEV/view?usp=sharing" target="_blank"><span>Resume</span>PDF on Google Drive</a></li>
+                </ul>
+            </section>
         </div>
-    </div>
+    </aside>
 
     <script>
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
-                const filter = tab.dataset.filter;
-                document.querySelectorAll('.project-wrapper').forEach(p => {
-                    p.classList.toggle('hidden', filter !== 'all' && p.dataset.category !== filter);
-                });
-            });
-        });
+        // Fireflies for the plain page (the 3D scene has its own)
+        const jungle = document.querySelector('.jungle');
+        for (let i = 0; i < 18; i++) {
+            const fly = document.createElement('span');
+            fly.className = 'firefly';
+            fly.style.cssText =
+                `left:${Math.random() * 100}%;top:${15 + Math.random() * 85}%;` +
+                `--blink:${3 + Math.random() * 4}s;--drift:${7 + Math.random() * 6}s;--delay:${-Math.random() * 10}s;` +
+                `--dx:${Math.round((Math.random() - 0.5) * 140)}px;--dy:${Math.round((Math.random() - 0.5) * 90)}px`;
+            jungle.appendChild(fly);
+        }
     </script>
 </body>
 </html>
