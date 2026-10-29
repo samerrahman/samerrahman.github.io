@@ -1322,7 +1322,10 @@ export class Spider {
         const leaf0 = this.leaf;
         const P0 = this.object.position.clone(), q0 = this.object.quaternion.clone();
         const P1 = new V3(), n1 = new V3(), q1 = new THREE.Quaternion(), fw = new V3(), qp = new THREE.Quaternion();
-        const th = thread ? this._threadStart(leaf0, this.u, this.v) : null;
+        // No dragline when jumping up: silk only trails a jump that lands lower than it started
+        leaf1.surfacePoint(uv1.u, uv1.v, P1, n1);
+        const upward = P1.y > P0.y + 0.05;
+        const th = thread && !upward ? this._threadStart(leaf0, this.u, this.v) : null;
         leaf0.bounce(bounceUp);
         this._liftOff();
         let t = 0;

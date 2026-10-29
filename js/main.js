@@ -93,7 +93,8 @@ function start() {
 
     const plant = createPlant();
     scene.add(plant.group);
-    const flies = createFlies({ scene, plant, count: 4 });
+    // No flies, just the fireflies (flies.js draws both)
+    const flies = createFlies({ scene, plant, count: 0 });
     const spider = new Spider({ scene, plant, flies, camera });
 
     // index.html decides which leaf opens which section (data-leaf on each <section>)
