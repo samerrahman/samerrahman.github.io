@@ -88,7 +88,7 @@ const VEINS = (() => {
 // default camera; roll: extra twist about the midrib (degrees).
 
 const LEAF_SPECS = [
-    { section: 'about', attach: [0.03, 1.78, 0.16], yaw: 6, pitch: -58, face: 1, roll: 0,
+    { section: 'about', attach: [0.03, 1.78, 0.16], yaw: 180, pitch: -28, face: 1, roll: 0,
         length: 0.94, halfWidth: 0.39, droop: 0.2 },
     { section: 'research', attach: [-0.28, 1.6, -0.12], yaw: -75, pitch: 3, face: 0.55, roll: 0,
         length: 1.0, halfWidth: 0.41, droop: 0.22 },
