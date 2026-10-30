@@ -296,6 +296,7 @@ h3 { margin: 0; font-size: 1.08rem; color: var(--text); }
 .has-3d .project-item > a { display: block; }
 .has-3d .project-img { width: 100%; height: 170px; }
 
+.about-contact { font-family: "Fraunces", Georgia, serif; font-size: 1.15rem; color: var(--accent); margin: 1.6rem 0 0.7rem; }
 .contact-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
 .contact-list a {
     display: flex;
