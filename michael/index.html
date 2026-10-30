@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael · a story by Samer Rahman</title>
+    <meta name="description" content="Michael, a story in progress by Samer Rahman.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text: #ece8d6;
+            --muted: #a9b79a;
+            --accent: #b8e05c;
+            --line: rgba(184, 224, 92, 0.16);
+        }
+        html { background: #0c1c13; }
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.12rem;
+            line-height: 1.75;
+            background:
+                radial-gradient(1100px 700px at 85% -10%, rgba(150, 205, 90, 0.14), transparent 60%),
+                linear-gradient(180deg, #11291b 0%, #0b1a11 100%);
+            background-attachment: fixed;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 40px 28px 100px; }
+        .back { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 0.85rem; }
+        header { margin: 72px 0 64px; }
+        h1 { font-weight: 600; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; margin: 0 0 14px; letter-spacing: -0.02em; }
+        .byline { color: var(--muted); font-style: italic; margin: 0; }
+        .chapter {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+            gap: 56px;
+            padding: 48px 0;
+            border-top: 1px solid var(--line);
+        }
+        .text { max-width: 64ch; }
+        h2 { font-weight: 600; font-size: 1.9rem; margin: 0 0 1.2rem; display: flex; align-items: baseline; gap: 14px; }
+        .num { font-size: 0.95rem; color: var(--accent); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        p { margin: 0 0 1.2em; }
+        .art { margin: 0; position: sticky; top: 32px; align-self: start; }
+        .art img { display: block; width: 100%; border-radius: 14px; }
+        .art-slot {
+            aspect-ratio: 3 / 4;
+            border: 1px dashed rgba(184, 224, 92, 0.3);
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            color: rgba(169, 183, 154, 0.55);
+            font: 0.8rem -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .wip { border-top: 1px solid var(--line); padding-top: 32px; color: var(--muted); font-style: italic; }
+        @media (max-width: 820px) {
+            .chapter { grid-template-columns: 1fr; gap: 24px; }
+            .art { position: static; order: -1; max-width: 360px; }
+            .art-slot { aspect-ratio: 16 / 9; }
+        }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <a class="back" href="../#writing">← Samer Rahman</a>
+        <header>
+            <h1>Michael</h1>
+            <p class="byline">A story by Samer Rahman</p>
+        </header>
+
+        <section class="chapter" id="egg">
+            <div class="text">
+                <h2><span class="num">1</span>Egg</h2>
+                <p>Michael was born on the 4th day after the first full moon of spring in 2028. A healthy male larva wriggled out of its shell using its still-moist eyes (which were frankly closer to simple light detectors) to make out the difference between the surface of the shallow puddle-in-a-leaf and the surface. He wriggled his way around, still unaccustomed to his body, making uncoordinated jerky movements to escape the thin film which enveloped him. He could make out other mosquito larvae: his brothers and sisters, he quickly recognized due to their identical appearance to himself. His siblings, still writhing, slipped out of their eggs, one by one, and began to swim. Michael observed, though he had not the words to describe it, the innate purpose contained within his siblings. They swam up and around and had utter control of their body. Michael was sure he saw someone doing loop-de-loops around a larva that had failed to make it all the way out of the egg. Seeing this, Michael promptly began to float up to the top of the puddle-in-a-leaf, though not by his own choice. The water dictated his movement and he felt as though he lacked agency in his whole life altogether. Irritated by this, he focused on doing what he could to observe as much as possible, to try to understand the world he had been dropped into against his will. As he surfaced, he was greeted with the imposing rays of a tropic sun . As his eyes adjusted, he noticed the dense brush around the leaf, and the tall trees above. He was amazed, his body stinging as a result of the overwhelming light. In that moment He ceased all wriggling for about twenty seconds, then continued as he remembered who and where he was. In those twenty seconds, though, his body became a  statue and Michael experienced a whole lifetime. He could move however he wanted, wherever he wanted. He carved paths through the humid air, darting underneath the brush, weaving around plants and leaves, maybe even doing a loop-de-loop around his old puddle, then he soared up to the sky where he could see the tops of the trees and get a taste of the delicious tropic sun. When he was tired and leaden he would rest on one of the tall branches just below the last layer of shade on the tallest tree and look down on the world. And then twenty seconds was over and Michael now saw his own reflection in the water as he had managed to rotate over so he was pointing back down at the pool’s surface. Observing himself, he saw his two beady eyes attached to either side of his wide head and a long, translucent body with spiny hair sporadically emerging from it, tapering down to a point.</p>
+            </div>
+            <!-- Image slot: replace the placeholder with e.g. <img src="egg.jpg" alt="..."> -->
+            <figure class="art"><div class="art-slot">Image</div></figure>
+        </section>
+        <section class="chapter" id="larvae">
+            <div class="text">
+                <h2><span class="num">2</span>Larvae</h2>
+                <p>Michael decided that the time had come to move. He had spent enough time observing his siblings below him and tried to move his body into a C- shape  to the right, then to the left, and then to the right again. Lost in his effort, he found himself at the very edge of the leaf. Should he have continued swimming, Michael would have traversed off the leaf and down to his demise a mighty 1.2 meters down from where he currently lay. However, something in that moment compelled him to stop. Michael, completely oblivious to the parallel universe where he had once again returned to be one with the environment, now attempted to re-submerge himself into the water. What was peculiar to him then was the ease with which other larvae had begun swimming, each opening and closing their mouths for little particles of bacteria to consume, just like clockwork. This was something important, he recognized that much, as it seemed as though everyone was doing it. Everyone but him, in fact, though he paid not much attention to this, and continued to get deeper and deeper into the water. He was fully submerged now by several body lengths’ distance, and felt as though he was starting to get a hang of using his body to swim. He fell in with a pack of siblings, camouflaging himself, merging into the grey , translucent blob. He figured he may be able to ask what his siblings were doing, why they were doing it, and how he could get outside of the puddle. He realized then he had no way to actually ask any of these questions. Perhaps bumping into them or some kind of physical communication would work, though he tried this repeatedly to no avail. Michael, now slightly irritated, ceased his incessant knocking and stopped moving. He felt the magnetic pull on his body upwards back to the top of the water, his rear end slowly rising above his eyes, orienting him perfectly to observe everyone, hard at work, on something. His body had gone slack and his mind had become entirely consumed with thoughts. Specifically the thought that he seemed to be not exactly the same as any of his other siblings. Sure, they appeared nearly identical, but why had none of them responded when he tapped them? He thought that should someone have bumped into him he would at least pay them some mind, especially if they had done it several and several times over. These thoughts only infuriated Michael more and his body, hairs and all twitched with a steady pulse. He hated how he was ignored, how he felt alone, and he hated that feeling that everyone around him seemed to know what they were doing, imbued with a sort of stupid purpose, a direction that they were heading in. Lost for anything else to do though, and requiring sustenance to stay alive, he unfortunately understood then that he must fall back into the translucent, pulsating blob, and find some bacteria for himself, even if he couldn’t understand why. He was born from the sun, he realized. He must have been, or else he would just be another unreasonable sibling, mindlessly swimming and eating. He found pride in his analysis, Michael realized then that he was not actually as different from everyone else around him. He had a direction he wanted to head towards as well. It was just up, far away from everyone else, into the trees and back to where he belonged, the sun. His dream world was calling out to him, and nobody else could hear a sound.</p>
+                <p>It was not until day 6 that Michael finally picked up on a change in the other larvae’s behavior. He had grown considerably in this time, which he cited as a result of his natural superiority and perhaps also due to whatever particulate matter he had been consuming. When the day began and the big glowing ball of light re appeared in the sky, some of Michael's larger siblings opted to not begin their daily ritual of mindless feeding. Michael was confounded, though he welcomed the more open space in the pool, slightly less crowded. On day seven, even more siblings never came down from the surface, allowing Michael to explore crevices and edges he had never seen before, finding where the water came to a stop, and where the fleshy green leaf that supported his whole existence began. Curiosity pervaded his mind and he couldn’t help but wonder why his poolmates were acting the way they were. He nudged them left and right but couldn’t get them to budge in the slightest. Frustrated with a lack of results, he attempted to swim with such velocity into the pupae that he actually managed to dislodge one from it's spot, sending them sinking into the bottom of the pool. Michael felt  a little bad, but it was not like they would have any qualms about it, not that they even COULD if they had wanted to. He knew they would just swim back up to the surface and continue doing whatever they were doing, following that divine purpose which was ever so absent from Michael’s soul. But this sibling continued to sink down. What Michael did not know at this moment and would never figure out, is that the pupae he had bumped into already had a compromised air sac, and when he collided with them, he irreparably damaged this organ, making it impossible for them to float naturally. Michael, continuing to watch the crime scene, became a little worried. Hoping to right his wrongs, he dashed to the bottom of the pool and put his spiny body underneath the sinking sibling. He felt contact between his midline and their lower end, and began to thrash, using all of his effort to bring the two of them back to the surface. Undulating his body became harder and harder and he started to feel stiff. Any upwards progress he had made began to undo itself as the two bodies sank downwards towards the bottom of the pool.</p>
+            </div>
+            <!-- Image slot: replace the placeholder with e.g. <img src="larvae.jpg" alt="..."> -->
+            <figure class="art"><div class="art-slot">Image</div></figure>
+        </section>
+        <section class="chapter" id="pupae">
+            <div class="text">
+                <h2><span class="num">3</span>Pupae</h2>
+                <p>The next time Michael awoke was several days later. He found himself at the top of the pool and was greeted with the oppressing but familiar midday sun. Unaware of how many days had passed, he made his intention to begin what had become a bit of a daily habit — swimming around the pool — when he realized that he was unable to swim or really move his body at all. Instead, his desperate thrashing sent him flipping head-over-tail in a disorienting, uncontrollable tumble. It hadn’t been that long since he figured out how to even swim and he felt the same sense of  hopelessness as this one ability had been taken away from him. He could at the very least tell that he was being restricted by something surrounding his body. The sleeve’s tight embrace felt like it only got more restrictive as he tried to repeatedly exert himself. His mind raced and as he thought of explanations or escapes he was reminded of his rigid sibling and the last thing he saw before losing consciousness. He made an attempt to crane his neck (whether or not he still had one he was unsure) over to see the bottom of the pool but was completely unable. Michael’s mind became flooded with thoughts picturing what could be at the bottom of the pool, what would be the result of his his crime and his struggle, and in that moment he had no other wish than to be greeted with the emptiness of the bottom of the pool, to know that the larvae he knocked into had been okay and escaped unscathed. But the unfortunate truth of that moment was that Michael had his own issue to deal with: figuring out how to move.</p>
+                <p>In an intense battle with his captor, Michael found that it actually got slightly looser as he continued to fight, though, It was nothing compared to what would be required to free himself. While wriggling Michael also found that his body had changed in two ways since the last time he was awake. For one, he  felt significantly more fatigued despite only having moved for a time which he would approximate to five circumnavigations of his leaf. Secondly, his body felt more rigid, thereby harder to move. In fact, now that he had stopped moving, he was able to take some time to properly feel what had changed. Part of the reason he felt so claustrophobic was because he wasn’t the only thing stuck in this capsule. Six other slimy, skinny appendages were pressed up against his thorax and thin pieces of membrane squished up against his sides. Maybe it was the crampedness of the situation, or maybe it was the feeling that something alien was in there with him, but Michael could only perceive the situation as extremely eerie, especially with how quiet it was all around him. He presumed that his siblings had come to a similar predicament, which gave him some comfort. Or, had it actually been the case that all of his siblings were gone or dead? Such a frightening thought was not something Michael wanted to dwell on. Feeling exhausted, too tired to think of solutions, he felt as though his only choice was to go back to sleep.</p>
+                <p>That day, Michael dreamt again for the first time since he was a larva.</p>
+            </div>
+            <!-- Image slot: replace the placeholder with e.g. <img src="pupae.jpg" alt="..."> -->
+            <figure class="art"><div class="art-slot">Image</div></figure>
+        </section>
+
+        <p class="wip">Work in progress. More chapters to come.</p>
+    </main>
+</body>
+</html>

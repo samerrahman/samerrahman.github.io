@@ -199,12 +199,15 @@ function start() {
     homePose(camera.position, controls.target);
     camera.lookAt(controls.target);
 
-    // Start the spider on the decorative leaf nearest the camera, so it's in view right away
+    // Start the spider on the free leaf that faces the camera most, so it's in view right away
     scene.updateMatrixWorld(true);
     const startLeaf = plant.leaves
         .filter(l => !l.section)
-        .map(l => ({ l, d: l.surfacePoint(l.center.u, l.center.v, _p, _n).distanceTo(camera.position) }))
-        .sort((a, b) => a.d - b.d)[0]?.l ?? plant.leaves[0];
+        .map(l => {
+            l.surfacePoint(l.center.u, l.center.v, _p, _n);
+            return { l, d: _n.dot(_v.subVectors(camera.position, _p).normalize()) };
+        })
+        .sort((a, b) => b.d - a.d)[0]?.l ?? plant.leaves[0];
     spider.placeOn(startLeaf, startLeaf.center.u, startLeaf.center.v);
     spider.setRoaming(!reduceMotion);
     addEventListener('resize', () => {
@@ -301,7 +304,8 @@ function start() {
         if (!pointer.moved) return;
         pointer.moved = false;
         const hit = pick(pointer.x, pointer.y);
-        const leaf = hit && tagOf(hit.object, 'leaf');
+        // Only leaves with a section are interactive
+        const leaf = hit && tagOf(hit.object, 'leaf')?.section ? tagOf(hit.object, 'leaf') : null;
         const onSpider = hit && tagOf(hit.object, 'spider');
         if (pointer.overCanvas) {
             setHover(leaf);
@@ -325,7 +329,6 @@ function start() {
         if (hit && tagOf(hit.object, 'spider')) return spider.poke();
         const leaf = hit && tagOf(hit.object, 'leaf');
         if (leaf?.section) return navigate(leaf.section);
-        if (leaf) return visit(leaf);
         if (activeSection) goHome();
     });
 
@@ -353,12 +356,6 @@ function start() {
         if (id !== navId || !arrived) return;
         setPending(null);
         openPanel(section);
-    }
-
-    // A leaf without a section: the spider just goes and sits there
-    function visit(leaf) {
-        if (activeSection) goHome();
-        spider.goToLeaf(leaf).catch(err => console.error(err));
     }
 
     function goHome({ push = true } = {}) {
