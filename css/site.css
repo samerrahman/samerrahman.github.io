@@ -264,6 +264,13 @@ body {
 .r-skills span:nth-child(odd) { font-weight: 600; }
 .r-skills span:nth-child(even) { color: var(--muted); }
 
+.fav-heading { font-family: "Fraunces", Georgia, serif; font-size: 1.15rem; color: var(--accent); margin: 0 0 0.8rem; }
+.fav-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 14px 12px; }
+.fav-grid a { display: block; color: var(--text); text-decoration: none; font-size: 0.8rem; line-height: 1.3; }
+.fav-grid img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 10px; background: var(--card); border: 1px solid var(--line); margin-bottom: 6px; transition: transform 0.2s, border-color 0.2s; }
+.fav-grid a:hover img { transform: translateY(-3px); border-color: rgba(184, 224, 92, 0.5); }
+.fav-grid a:hover span { color: var(--accent); }
+
 .projects { display: flex; flex-direction: column; gap: 14px; }
 .project-wrapper {
     border-radius: 16px;
