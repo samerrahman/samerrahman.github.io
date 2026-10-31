@@ -39,14 +39,14 @@ const PAL = {
 // Dimensions. Spider space: +Z forward, +Y up (dorsal), +X to the spider's left. The root sits on
 // the leaf under the sternum; the body rig floats BODY_H above it. Body length ≈ 0.24.
 
-const BODY_H = 0.034;
+const BODY_H = 0.04;
 const FOOT_LIFT = 0.0024;          // tarsus tips rest on, not in, the leaf
-const CARA = { zF: 0.062, zR: -0.048, w: 0.044, hF: 0.046, hR: 0.022, bot: 0.009, y0: 0.004 };
-const ABD = { len: 0.122, w: 0.04, hT: 0.036, hB: 0.027, yc: 0.006, z0: 0.006 };
+const CARA = { zF: 0.062, zR: -0.048, w: 0.042, hF: 0.064, hR: 0.03, bot: 0.009, y0: 0.004 };   // tall, boxy Portia head
+const ABD = { len: 0.094, w: 0.033, hT: 0.02, hB: 0.016, yc: 0.008, z0: 0.006 };    // small and flat
 const ABD_PIVOT = new V3(0, 0.012, -0.044);
 const ABD_PITCH = 0.1;             // abdomen tail held a little up
 const AME_R = 0.0148;
-const AME_POS = [new V3(0.0158, CARA.y0 + 0.021, CARA.zF - 0.0035), new V3(-0.0158, CARA.y0 + 0.021, CARA.zF - 0.0035)];
+const AME_POS = [new V3(0.0158, CARA.y0 + 0.03, CARA.zF - 0.0035), new V3(-0.0158, CARA.y0 + 0.03, CARA.zF - 0.0035)];
 const AME_ROWS = [0, 0.07, 0.14, 0.2, 0.26, 0.33, 0.45, 0.6];
 const AME_COLS = [PAL.pupil, PAL.pupil, PAL.irisIn, PAL.irisOut, PAL.rim, PAL.ink, PAL.ink];
 const MOUTH = new V3(0, CARA.y0 - 0.026, CARA.zF + 0.02);                 // body-rig space
@@ -54,7 +54,7 @@ const SPINNERET = new V3(0, ABD.yc - 0.011, ABD.z0 - ABD.len + 0.004);    // abd
 const PITCH_PIVOT = new V3(0, 0, -0.03);                                  // body rears up around here
 const MOUTH_ROOT = new V3(0, BODY_H, 0).add(MOUTH);
 const SPIN_ROOT = SPINNERET.clone().applyAxisAngle(X_AXIS, ABD_PITCH).add(ABD_PIVOT).add(new V3(0, BODY_H, 0));
-const ANK_UP = 0.6, ANK_IN = 0.8;  // metatarsus direction from the foot up to the ankle
+const ANK_UP = 0.9, ANK_IN = 0.4;    // metatarsus direction from the foot up to the ankle
 const EAT_TIME = 3.6;
 const PALP_L = [0.017, 0.014, 0.014], PALP_R = [0.0027, 0.0037, 0.0034];
 const PALP_BASE = [new V3(0.012, CARA.y0 - 0.006, CARA.zF - 0.005), new V3(-0.012, CARA.y0 - 0.006, CARA.zF - 0.005)];
@@ -62,12 +62,12 @@ const WALK = { uMin: 0.12, uMax: 0.9, vMax: 0.85 };   // walkable region (CONTRA
 
 // Legs I–IV: angle from forward, foot reach from the coxa, coxa x/z, femur/tibia/metatarsus lengths
 const LEG_DEFS = [
-    { ang: 0.5, reach: 0.205, cx: 0.024, cz: 0.036, L: [0.088, 0.097, 0.088], th: 1.12 },
-    { ang: 1.16, reach: 0.175, cx: 0.031, cz: 0.019, L: [0.074, 0.08, 0.074], th: 0.96 },
-    { ang: 1.92, reach: 0.17, cx: 0.031, cz: 0.001, L: [0.072, 0.075, 0.071], th: 0.96 },
-    { ang: 2.58, reach: 0.2, cx: 0.025, cz: -0.018, L: [0.085, 0.091, 0.085], th: 1.03 },
+    { ang: 0.5, reach: 0.175, cx: 0.024, cz: 0.036, L: [0.088, 0.097, 0.088], th: 1.12 },
+    { ang: 1.16, reach: 0.15, cx: 0.031, cz: 0.019, L: [0.074, 0.08, 0.074], th: 0.96 },
+    { ang: 1.92, reach: 0.145, cx: 0.031, cz: 0.001, L: [0.072, 0.075, 0.071], th: 0.96 },
+    { ang: 2.58, reach: 0.17, cx: 0.025, cz: -0.018, L: [0.085, 0.091, 0.085], th: 1.03 },
 ];
-const LEG_R = [0.0062, 0.0052, 0.0042, 0.0058, 0.0046];   // femur, tibia, metatarsus, knee ball, ankle ball
+const LEG_R = [0.0088, 0.0046, 0.0028, 0.0068, 0.0034];   // femur, tibia, metatarsus, knee ball, ankle ball
 
 // Leaf edge samples for silk drops: both sides and the tip
 const EDGE_SAMPLES = [];
@@ -575,14 +575,14 @@ export class Spider {
             const s = sOf(t), P = carapacePoint(s, a, new V3()), N = normalAt(carapacePoint, s, a, new V3());
             const dir = N.clone().addScaledVector(Z_AXIS, fwdBias).normalize();
             const g = faceted({ fn: eyePoint, rows, nA, aOff: 0, smooth: true, jitter: 0,
-                color: (c, n, i) => (i === 1 ? PAL.irisIn : i === 2 ? PAL.rim : PAL.pupil) });
+                color: (c, n, i) => (i === 1 ? PAL.irisOut : i === 2 ? PAL.irisIn : PAL.pupil) });
             _q1.setFromUnitVectors(Z_AXIS, dir);
             return g.applyMatrix4(_m1.compose(P.addScaledVector(N, -r * 0.35), _q1, _a.setScalar(r)));
         };
         for (const side of [1, -1]) {
-            small.push(eyeAt(0.9, Math.PI - side * 1.05, 0.0068, [0, 0.12, 0.22, 0.32, 0.55], 10, 0.6));
-            small.push(eyeAt(0.62, Math.PI - side * 0.62, 0.0056, [0, 0.15, 0.3, 0.55], 8, 0));
-            small.push(eyeAt(0.78, Math.PI - side * 0.8, 0.0023, [0, 0.3, 0.55], 6, 0));
+            small.push(eyeAt(0.9, Math.PI - side * 1.05, 0.0098, [0, 0.12, 0.22, 0.32, 0.55], 10, 0.6));   // ALE
+            small.push(eyeAt(0.62, Math.PI - side * 0.62, 0.0088, [0, 0.15, 0.3, 0.55], 8, 0));            // PLE
+            small.push(eyeAt(0.78, Math.PI - side * 0.8, 0.0036, [0, 0.3, 0.55], 6, 0));             // PME
         }
         rig.add(new THREE.Mesh(mergeGeometries(small), eyeMat));
 
@@ -750,6 +750,7 @@ export class Spider {
         for (const leg of this.legs) {
             if (leg.mode === 'planted') {
                 leg.leaf.surfacePoint(leg.u, leg.v, leg.fw, leg.fn);
+                if (leg.under) leg.fn.negate();   // gripping the underside of the blade
                 leg.fw.addScaledVector(leg.fn, FOOT_LIFT);
             } else if (leg.mode === 'pose') {
                 this.object.localToWorld(leg.fw.copy(leg.poseLocal));
@@ -910,7 +911,7 @@ export class Spider {
             // Knee up and a little outward
             const P = _h.set(F.x - H.x, 0, F.z - H.z);
             const pl = P.length();
-            if (pl > 1e-6) P.multiplyScalar(0.35 / pl);
+            if (pl > 1e-6) P.multiplyScalar(0.18 / pl);   // knees high: arched legs
             P.y += 1;
             P.addScaledVector(D, -P.dot(D));
             if (P.lengthSq() < 1e-10) P.set(0, 1, 0);
@@ -986,10 +987,24 @@ export class Spider {
 
     _airLegs(s) { for (const leg of this.legs) this._airFoot(leg, s, leg.poseLocal); }
 
+    // Plant every foot on (leaf) where its rest spot projects, on the top face or the underside
+    _gripLeaf(leaf, under, pos, quat) {
+        for (const leg of this.legs) {
+            _a.copy(leg.rest).applyQuaternion(quat).add(pos);
+            const uv = leaf.project(_a);
+            leg.leaf = leaf;
+            leg.u = clamp(uv.u, 0.04, 0.97);
+            leg.v = clamp(uv.v, -0.98, 0.98);
+            leg.under = under;
+            leg.mode = 'planted';
+        }
+    }
+
     // Touch down on (leaf, u, v) facing fwd: feet slap down onto their rest spots
     _landOn(leaf, u, v, fwd, bounce = 1) {
         this.leaf = leaf; this.u = u; this.v = v;
         this.mode = 'ground';
+        for (const leg of this.legs) leg.under = false;
         this.airborne = false;
         this._speed = 0; this._turnRate = 0; this._moveVel.set(0, 0, 0);
         const F = this._af.compute(leaf, u, v);
@@ -1324,7 +1339,7 @@ export class Spider {
         const P1 = new V3(), n1 = new V3(), q1 = new THREE.Quaternion(), fw = new V3(), qp = new THREE.Quaternion();
         // No dragline when jumping up: silk only trails a jump that lands lower than it started
         leaf1.surfacePoint(uv1.u, uv1.v, P1, n1);
-        const upward = P1.y > P0.y + 0.05;
+        const upward = P1.y > P0.y;
         const th = thread && !upward ? this._threadStart(leaf0, this.u, this.v) : null;
         leaf0.bounce(bounceUp);
         this._liftOff();
@@ -1437,8 +1452,78 @@ export class Spider {
         this.crouchTarget = 0;
         this.crouchRate = 30;
         this.palpMode = 'idle';
+        if (P1.y > P0.y + 0.02 && leaf1 !== this.leaf) {
+            yield* this._jumpUnderAndClimb(leaf1, uv1, hurry);
+            return;
+        }
         yield* this._flight(leaf1, uv1, { T: plan.T, H: plan.H, fwd: dir, bounceUp: 0.8, bounceDown: hurry ? 1.1 : 0.9 });
         yield* this._wait(hurry ? 0.1 : 0.25);
+    }
+
+    // Jumping up: catch the underside of the target leaf by its nearest edge, pull over the edge
+    // onto the top, then walk to the spot. No dragline on the way up.
+    *_jumpUnderAndClimb(leaf1, uv1, hurry) {
+        const leaf0 = this.leaf;
+        const P0 = this.object.position.clone(), q0 = this.object.quaternion.clone();
+        const pr = leaf1.project(P0);
+        const side = Math.sign(pr.v) || 1;
+        const ue = clamp(pr.u, 0.25, 0.8);
+        const E = new V3(), nE = new V3(), U = new V3(), nU = new V3(), Tp = new V3(), nT = new V3();
+        const out = new V3(), axis = new V3(), tmp = new V3(), fwd = new V3();
+        const qUnder = new THREE.Quaternion(), qEdge = new THREE.Quaternion(), qTop = new THREE.Quaternion();
+        const pose = () => {
+            leaf1.surfacePoint(ue, side * 0.99, E, nE);
+            leaf1.surfacePoint(ue, side * 0.86, U, nU);
+            leaf1.surfacePoint(ue, side * 0.78, Tp, nT);
+            this._edgeOut(leaf1, ue, side * 0.99, out);
+            U.addScaledVector(nU, -0.004);                       // just under the blade
+            basisQuat(out, tmp.copy(nU).negate(), qUnder);       // belly to the underside, head to the edge
+            basisQuat(nE, out, qEdge);                           // over the edge, head up and over
+            basisQuat(fwd.copy(out).negate(), nT, qTop);         // on top, facing in
+        };
+        pose();
+        const nNeg = tmp.copy(nU).negate().clone();
+        const plan = this._planJump(P0, this._up, U, nNeg, leaf0, leaf1, hurry);
+        const T = plan.T, H = Math.min(plan.H, 0.06 + 0.1 * P0.distanceTo(U));
+        leaf0.bounce(0.8);
+        this._liftOff();
+        let t = 0;
+        while (t < T) {
+            t += yield;
+            const s = Math.min(t / T, 1);
+            pose();
+            this._arcPoint(P0, U, H, s, this.airPos);
+            this.airQuat.slerpQuaternions(q0, qUnder, sstep(0.05, 0.85, s));
+            this._airLegs(s);
+        }
+        leaf1.bounce(0.5);
+        // Feet grab the underside, then the climb: under → edge → top, rotating about the edge
+        this._gripLeaf(leaf1, true, this.airPos, this.airQuat);
+        yield* this._wait(hurry ? 0.08 : 0.2);
+        const C = hurry ? 0.42 : 0.6;
+        let regripped = false;
+        t = 0;
+        while (t < C) {
+            t += yield;
+            const s = Math.min(t / C, 1);
+            pose();
+            if (s >= 0.5 && !regripped) {
+                // Over the edge: the feet move to the top face around where she'll stand
+                regripped = true;
+                this._gripLeaf(leaf1, false, Tp, qTop);
+            }
+            if (s < 0.5) {
+                const k = sstep(0, 1, s * 2);
+                this.airPos.lerpVectors(U, tmp.copy(E).addScaledVector(out, 0.006), k);
+                this.airQuat.slerpQuaternions(qUnder, qEdge, k);
+            } else {
+                const k = sstep(0, 1, s * 2 - 1);
+                this.airPos.lerpVectors(tmp.copy(E).addScaledVector(out, 0.006), Tp, k);
+                this.airQuat.slerpQuaternions(qEdge, qTop, k);
+            }
+        }
+        this._landOn(leaf1, ue, side * 0.78, fwd.copy(out).negate(), 0.5);
+        yield* this._walkTo(uv1.u, uv1.v, { speed: 0.7, hurry: true, tol: 0.018, maxTime: 2.5 });
     }
 
     // goToLeaf: jump (or abseil when the target is mostly below), then settle on the spot
