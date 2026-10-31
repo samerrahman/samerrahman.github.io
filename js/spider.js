@@ -750,7 +750,6 @@ export class Spider {
         for (const leg of this.legs) {
             if (leg.mode === 'planted') {
                 leg.leaf.surfacePoint(leg.u, leg.v, leg.fw, leg.fn);
-                if (leg.under) leg.fn.negate();   // gripping the underside of the blade
                 leg.fw.addScaledVector(leg.fn, FOOT_LIFT);
             } else if (leg.mode === 'pose') {
                 this.object.localToWorld(leg.fw.copy(leg.poseLocal));
@@ -987,24 +986,10 @@ export class Spider {
 
     _airLegs(s) { for (const leg of this.legs) this._airFoot(leg, s, leg.poseLocal); }
 
-    // Plant every foot on (leaf) where its rest spot projects, on the top face or the underside
-    _gripLeaf(leaf, under, pos, quat) {
-        for (const leg of this.legs) {
-            _a.copy(leg.rest).applyQuaternion(quat).add(pos);
-            const uv = leaf.project(_a);
-            leg.leaf = leaf;
-            leg.u = clamp(uv.u, 0.04, 0.97);
-            leg.v = clamp(uv.v, -0.98, 0.98);
-            leg.under = under;
-            leg.mode = 'planted';
-        }
-    }
-
     // Touch down on (leaf, u, v) facing fwd: feet slap down onto their rest spots
     _landOn(leaf, u, v, fwd, bounce = 1) {
         this.leaf = leaf; this.u = u; this.v = v;
         this.mode = 'ground';
-        for (const leg of this.legs) leg.under = false;
         this.airborne = false;
         this._speed = 0; this._turnRate = 0; this._moveVel.set(0, 0, 0);
         const F = this._af.compute(leaf, u, v);
@@ -1452,79 +1437,10 @@ export class Spider {
         this.crouchTarget = 0;
         this.crouchRate = 30;
         this.palpMode = 'idle';
-        if (P1.y > P0.y + 0.02 && leaf1 !== this.leaf) {
-            yield* this._jumpUnderAndClimb(leaf1, uv1, hurry);
-            return;
-        }
         yield* this._flight(leaf1, uv1, { T: plan.T, H: plan.H, fwd: dir, bounceUp: 0.8, bounceDown: hurry ? 1.1 : 0.9 });
         yield* this._wait(hurry ? 0.1 : 0.25);
     }
 
-    // Jumping up: catch the underside of the target leaf by its nearest edge, pull over the edge
-    // onto the top, then walk to the spot. No dragline on the way up.
-    *_jumpUnderAndClimb(leaf1, uv1, hurry) {
-        const leaf0 = this.leaf;
-        const P0 = this.object.position.clone(), q0 = this.object.quaternion.clone();
-        const pr = leaf1.project(P0);
-        const side = Math.sign(pr.v) || 1;
-        const ue = clamp(pr.u, 0.25, 0.8);
-        const E = new V3(), nE = new V3(), U = new V3(), nU = new V3(), Tp = new V3(), nT = new V3();
-        const out = new V3(), axis = new V3(), tmp = new V3(), fwd = new V3();
-        const qUnder = new THREE.Quaternion(), qEdge = new THREE.Quaternion(), qTop = new THREE.Quaternion();
-        const pose = () => {
-            leaf1.surfacePoint(ue, side * 0.99, E, nE);
-            leaf1.surfacePoint(ue, side * 0.86, U, nU);
-            leaf1.surfacePoint(ue, side * 0.78, Tp, nT);
-            this._edgeOut(leaf1, ue, side * 0.99, out);
-            U.addScaledVector(nU, -0.004);                       // just under the blade
-            basisQuat(out, tmp.copy(nU).negate(), qUnder);       // belly to the underside, head to the edge
-            basisQuat(nE, out, qEdge);                           // over the edge, head up and over
-            basisQuat(fwd.copy(out).negate(), nT, qTop);         // on top, facing in
-        };
-        pose();
-        const nNeg = tmp.copy(nU).negate().clone();
-        const plan = this._planJump(P0, this._up, U, nNeg, leaf0, leaf1, hurry);
-        const T = plan.T, H = Math.min(plan.H, 0.06 + 0.1 * P0.distanceTo(U));
-        leaf0.bounce(0.8);
-        this._liftOff();
-        let t = 0;
-        while (t < T) {
-            t += yield;
-            const s = Math.min(t / T, 1);
-            pose();
-            this._arcPoint(P0, U, H, s, this.airPos);
-            this.airQuat.slerpQuaternions(q0, qUnder, sstep(0.05, 0.85, s));
-            this._airLegs(s);
-        }
-        leaf1.bounce(0.5);
-        // Feet grab the underside, then the climb: under → edge → top, rotating about the edge
-        this._gripLeaf(leaf1, true, this.airPos, this.airQuat);
-        yield* this._wait(hurry ? 0.08 : 0.2);
-        const C = hurry ? 0.42 : 0.6;
-        let regripped = false;
-        t = 0;
-        while (t < C) {
-            t += yield;
-            const s = Math.min(t / C, 1);
-            pose();
-            if (s >= 0.5 && !regripped) {
-                // Over the edge: the feet move to the top face around where she'll stand
-                regripped = true;
-                this._gripLeaf(leaf1, false, Tp, qTop);
-            }
-            if (s < 0.5) {
-                const k = sstep(0, 1, s * 2);
-                this.airPos.lerpVectors(U, tmp.copy(E).addScaledVector(out, 0.006), k);
-                this.airQuat.slerpQuaternions(qUnder, qEdge, k);
-            } else {
-                const k = sstep(0, 1, s * 2 - 1);
-                this.airPos.lerpVectors(tmp.copy(E).addScaledVector(out, 0.006), Tp, k);
-                this.airQuat.slerpQuaternions(qEdge, qTop, k);
-            }
-        }
-        this._landOn(leaf1, ue, side * 0.78, fwd.copy(out).negate(), 0.5);
-        yield* this._walkTo(uv1.u, uv1.v, { speed: 0.7, hurry: true, tol: 0.018, maxTime: 2.5 });
-    }
 
     // goToLeaf: jump (or abseil when the target is mostly below), then settle on the spot
     *_taskGoTo(goal) {
