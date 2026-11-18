@@ -237,6 +237,13 @@
 
             <section id="favorites" data-section="favorites" data-leaf="3">
                 <h2>Favorites</h2>
+                <h3 class="fav-heading">Novels</h3>
+                <ul class="fav-grid">
+                    <li><a href="https://www.goodreads.com/book/isbn/9780553213690" target="_blank"><img src="images/favorites/metamorphosis.jpg" alt="" loading="lazy"><span>Metamorphosis</span></a></li>
+                    <li><a href="https://www.goodreads.com/book/isbn/9780812979657" target="_blank"><img src="images/favorites/god-of-small-things.jpg" alt="" loading="lazy"><span>The God of Small Things</span></a></li>
+                    <li><a href="https://www.novelupdates.com/series/reverend-insanity/" target="_blank"><img src="images/favorites/reverend-insanity.jpg" alt="" loading="lazy"><span>Reverend Insanity</span></a></li>
+                    <li><a href="https://www.goodreads.com/book/isbn/9781594205613" target="_blank"><img src="images/favorites/the-idiot.jpg" alt="" loading="lazy"><span>The Idiot</span></a></li>
+                </ul>
                 <h3 class="fav-heading">Anime</h3>
                 <ul class="fav-grid">
                     <li><a href="https://myanimelist.net/anime/9253" target="_blank"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9253-tIUXF2gfU8Sg.jpg" alt="" loading="lazy"><span>Steins;Gate</span></a></li>
@@ -261,13 +268,6 @@
                     <li><a href="https://myanimelist.net/manga/44489" target="_blank"><img src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx74489-5HtDCFfut8Be.jpg" alt="" loading="lazy"><span>Houseki no Kuni</span></a></li>
                     <li><a href="https://myanimelist.net/manga/145863" target="_blank"><img src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx146983-pLf4apCkFwKL.jpg" alt="" loading="lazy"><span>Sayonara Eri</span></a></li>
                 </ul>
-                <h3 class="fav-heading">Novels</h3>
-                <ul class="fav-grid">
-                    <li><a href="https://www.goodreads.com/book/isbn/9780553213690" target="_blank"><img src="images/favorites/metamorphosis.jpg" alt="" loading="lazy"><span>Metamorphosis</span></a></li>
-                    <li><a href="https://www.goodreads.com/book/isbn/9780812979657" target="_blank"><img src="images/favorites/god-of-small-things.jpg" alt="" loading="lazy"><span>The God of Small Things</span></a></li>
-                    <li><a href="https://www.novelupdates.com/series/reverend-insanity/" target="_blank"><img src="images/favorites/reverend-insanity.jpg" alt="" loading="lazy"><span>Reverend Insanity</span></a></li>
-                    <li><a href="https://www.goodreads.com/book/isbn/9781594205613" target="_blank"><img src="images/favorites/the-idiot.jpg" alt="" loading="lazy"><span>The Idiot</span></a></li>
-                </ul>
             </section>
 
             <section id="writing" data-section="writing" data-leaf="7">
@@ -283,28 +283,24 @@
                 <div class="resume">
                     <h3>Education</h3>
                     <div class="r-row"><strong>Freshman, Stanford University</strong><span>2026 – Present</span></div>
-                    <div class="r-row"><strong>Mathematical Foundations of Computer Science with Prof. Rajiv Gandhi at UPenn (PACT)</strong><span>2024</span></div>
-                    <ul><li>Intensive study in proof-based discrete mathematics, graph theory, and algorithms.</li></ul>
-                    <div class="r-row"><strong>High School, Detroit Country Day School</strong><span>2022 – 2026</span></div>
-                    <ul>
-                        <li>AP Chemistry, AP Physics C, AP Psychology, AP Seminar, AP Calculus BC, AP Spanish V, AP Chinese, Multivariable Calculus, Differential Equations, Stan-X Research in Genetics.</li>
-                        <li>Completed 25 Honors or AP-level courses.</li>
-                    </ul>
+                    <ul><li>Coursework: MATH 61CM, PHYSICS 61.</li></ul>
+                    <div class="r-row"><strong>Mathematical Foundations of Computer Science, UPenn (PACT)</strong><span>2024</span></div>
+                    <ul><li>Studied proof-based discrete mathematics, graph theory, and algorithms with Prof. Rajiv Gandhi.</li></ul>
+                    <div class="r-row"><strong>Detroit Country Day School</strong><span>2022 – 2026</span></div>
 
                     <h3>Skills</h3>
                     <div class="r-skills">
                         <span>Programming</span><span>Java, Python (PyTorch, TensorFlow)</span>
                         <span>Languages</span><span>English, Spanish, Chinese</span>
                         <span>Academic</span><span>Scientific Research, Academic Writing and Editing</span>
-                        <span>Leadership</span><span>Tutoring, Organization Management, Community Service, Team Collaboration</span>
                     </div>
 
                     <h3>Research and Publications</h3>
                     <div class="r-row"><strong>SEAL — Self-Adapting Language Models</strong><span>2025 – 2026</span></div>
                     <ul>
-                        <li>Collaborated with an MIT researcher on unsupervised language-model self-adaptation, investigating how models can autonomously incorporate new knowledge from niche datasets.</li>
-                        <li>Built fully autonomous data-generation pipelines to support model adaptation using PyTorch and Hugging Face Transformers, Datasets, and Accelerate.</li>
-                        <li>Developed reinforcement learning–based reward mechanisms and applied Group Relative Policy Optimization (GRPO) to guide self-adaptation and improve knowledge incorporation.</li>
+                        <li>Collaborated with an MIT researcher on unsupervised language-model self-adaptation, investigating how models can incorporate new knowledge through self-generated training data.</li>
+                        <li>Automated data generation within the training pipeline while maintaining comparable model performance; implemented adaptation workflows in PyTorch.</li>
+                        <li>Developed reinforcement learning–based reward mechanisms and applied Group Relative Policy Optimization (GRPO) to guide data generation for knowledge incorporation.</li>
                     </ul>
                     <div class="r-row"><strong>Biomedical Signal Processing Research</strong><span>2024 – 2025</span></div>
                     <ul>
@@ -322,13 +318,24 @@
                         <li>Recognitions: 3rd Place (Metro Detroit Fair, Earth and Environmental Sciences).</li>
                     </ul>
 
+                    <h3>Projects</h3>
+                    <div class="r-row"><strong>Cloudbound — Hand-Tracked WebXR Game, Immerse the Bay (Stanford XR)</strong><span>2026</span></div>
+                    <ul>
+                        <li>Co-developed a mixed-reality game for Meta Quest in which players use their tracked hands as the game world, catching, carrying, and guiding characters across levels of increasing difficulty.</li>
+                        <li>Implemented real-time hand physics (palm-contact detection, joint smoothing with One Euro filtering) in TypeScript and WebXR.</li>
+                    </ul>
+                    <div class="r-row"><strong>HUSH — Cooperative Horror Game, Cal Hacks 13.0</strong><span>2026</span></div>
+                    <ul>
+                        <li>Co-developed a real-time cooperative horror game in which information from the players' webcams is used to influence the monster's behavior.</li>
+                        <li>The project combined a game engine, emotion/facial expression detection, and multiplayer state synchronization using React, TypeScript, Three.js, and SpacetimeDB.</li>
+                    </ul>
+
                     <h3>Awards</h3>
+                    <div class="r-row"><strong>Immerse the Bay 2026 (Stanford XR) — Best of Creative XR (Cloudbound)</strong><span>2026</span></div>
                     <div class="r-row"><strong>Cal Hacks 13.0 — Meta “Bringing People Closer Together with AI” Winner (HUSH)</strong><span>2026</span></div>
-                    <div class="r-row"><strong>Model UN Book Award at NAIMUN, Chinese bilingual cybersecurity committee</strong><span>2025</span></div>
-                    <div class="r-row"><strong>Model UN Second Award at Canadian American Security Councils and Summits</strong><span>2025</span></div>
-                    <div class="r-row"><strong>Model UN Third Award at MUN University of Chicago</strong><span>2025</span></div>
-                    <div class="r-row"><strong>National Spanish Exam — Three-Time Gold Medalist</strong><span>2023, 2024, 2025</span></div>
                     <div class="r-row"><strong>Computational Linguistics Olympiad — Top 15% Nationally, Competition Tutor</strong><span>2024 – 2026</span></div>
+                    <div class="r-row"><strong>National Spanish Exam — Three-Time Gold Medalist</strong><span>2023, 2024, 2025</span></div>
+                    <div class="r-row"><strong>Model UN — NAIMUN Book Award; Canadian American Second Award; UChicago Third Award</strong><span>2023 – 2025</span></div>
 
                     <h3>Activities</h3>
                     <div class="r-row"><strong>President, Muslim Student Alliance</strong><span>2024 – 2026</span></div>
